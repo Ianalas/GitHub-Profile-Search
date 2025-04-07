@@ -4,8 +4,9 @@ import { api } from "../lib/axios";
 interface UserQueryContextType {
   profile: ProfileTypeResponse;
   isFounded: boolean;
+  isLoading: boolean;
   hasSearched: boolean;
-  fetchProfile: (query: string) => void;
+  fetchProfile: (query: string) => Promise<void>;
 }
 
 interface UserQueryTypeProviderProps {
@@ -35,10 +36,16 @@ export function UserQueryProvider({ children }: UserQueryTypeProviderProps) {
 
   const [isFounded, setIsFounded] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
 
   const fetchProfile = async (query: string) => {
+    setIsLoading(true); // Começa o "loading"
+
     try {
+
+      await new Promise((resolve) => setTimeout(resolve, 3000));
+
       const response = await api.get<ProfileTypeResponse>(
         `users/${query}`,
         AuthorizationAPI
@@ -58,11 +65,12 @@ export function UserQueryProvider({ children }: UserQueryTypeProviderProps) {
       }
     } finally {
       setHasSearched(true);
+      setIsLoading(false); // Finaliza o "loading"
     }
   };
 
   return (
-    <UserQueryContext.Provider value={{ fetchProfile, profile, isFounded, hasSearched }}>
+    <UserQueryContext.Provider value={{ fetchProfile, profile, isFounded, hasSearched, isLoading }}>
       {children}
     </UserQueryContext.Provider>
   );
