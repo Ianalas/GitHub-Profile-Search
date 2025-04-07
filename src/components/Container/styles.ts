@@ -1,30 +1,32 @@
 import { styled } from "styled-components";
 
 export const MainContainer = styled.main`
-  max-width: 1280px;
+  max-width: 1156px;
   margin: 0 auto;
-  border: 1px solid ${({theme}) => theme["white-color"]};
-  padding: 8rem 0;
-  border-radius: 12px;
+  background-color: ${({theme}) => theme.black};
 
   display: flex;
   flex-direction: column;
-  gap: 4rem;
+  gap: 1.75rem;
+  padding: 2.5rem;
 
 
   & > div{
     display: flex;
+    align-items: center;
     justify-content: center;
-    
+    gap: .75rem;
 
-    & > h1 {
-      color: ${({theme}) => theme["white-color"]};
-
-      & > i{
-        font-style: normal;
-        font-weight: 200;
-      }
+    & > h1{
+      display: flex;
+      gap: .75rem;
+      font-size: 3.75rem;
     }
-    
+
+    & > h1 > i {
+      font-style: normal;
+      font-weight: 200;
+      
+    }
   }
 `

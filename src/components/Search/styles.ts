@@ -5,27 +5,52 @@ export const ContainerSearch = styled.div`
 
   & > form{
     display: flex;
-    justify-content: center;
-    gap: 3rem;
+    justify-content: space-between;
 
-    width: 100%;
+    overflow: hidden;
+    background-color: ${({theme}) => theme.white};
+    border-radius: 10px;
+    border: 1px solid ${({theme}) => theme["grey-light"]};
+
+    min-width: 503px;
 
     & > input{
-      width: 50%;
+      flex: 1;
+
       border: none;
       outline: none;
-      padding: 2rem;
-      border-radius: 8px;
       border: 2px solid #fff;
 
-      background-color: rgba(255,255,255,0.15);
+      background-color: ${({theme}) => theme.white};
 
-      color: #fff;
-      font-weight: 100;
+      color: ${({theme}) => theme.black};
+      padding: 1rem;
+
+      font: 600 1.25rem 'Nunito Sans', sans-serif;
 
       &::placeholder{
-        color: #fff;
+        color: ${({theme}) => theme.black}; 
+        opacity: 0.65;
         
+      }
+    }
+
+    & > button{
+      border: none;
+      outline: none;
+
+      height: 62px;
+      width: 62px;
+      background-color: ${({theme}) => theme.blue};
+      border-radius: 10px;
+
+      color: ${({theme}) => theme.white};
+      cursor: pointer;
+
+      transition: background 250ms ease-in;
+
+      &:hover{
+        background-color: ${({theme}) => theme["blue-hover"]};
       }
     }
   }

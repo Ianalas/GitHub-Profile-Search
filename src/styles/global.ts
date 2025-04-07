@@ -8,8 +8,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    font-family: "Nunito", serif;
-    background-color: ${({theme}) => theme["base-background"]};
-    color:  ${({theme}) => theme["base-text"]};
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
+    
+    background-color: ${({theme}) => theme["gray-dark"]};
+    color:  ${({theme}) => theme.white}
   }
 `
