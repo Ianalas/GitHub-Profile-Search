@@ -1,6 +1,8 @@
 import { createContext, ReactNode, useState } from "react";
 import { api } from "../lib/axios";
 
+const TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
+
 interface UserQueryContextType {
   profile: ProfileTypeResponse;
   isFounded: boolean;
@@ -22,9 +24,11 @@ interface ProfileTypeResponse {
 }
 
 const AuthorizationAPI = {
-  headers: {
-    Authorization: `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`,
-  },
+  headers: TOKEN ? 
+  {
+    Authorization:`Bearer ${TOKEN}`,
+  }
+  : {},
 };
 
 export const UserQueryContext = createContext({} as UserQueryContextType);
@@ -43,8 +47,7 @@ export function UserQueryProvider({ children }: UserQueryTypeProviderProps) {
     setIsLoading(true); // Começa o "loading"
 
     try {
-
-      await new Promise((resolve) => setTimeout(resolve, 3000));
+      await new Promise((resolve) => setTimeout(resolve, 2000));
 
       const response = await api.get<ProfileTypeResponse>(
         `users/${query}`,
@@ -58,8 +61,6 @@ export function UserQueryProvider({ children }: UserQueryTypeProviderProps) {
         setIsFounded(false);
       }
     } catch (error: any) {
-      console.error("Erro ao buscar perfil:", error);
-
       if (error.response && error.response.status === 404) {
         setIsFounded(false);
       }
