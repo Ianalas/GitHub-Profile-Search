@@ -1,12 +1,13 @@
 # 🔍 GitHub Profile Search
 
-Aplicação web simples que permite buscar perfis públicos do GitHub através de um nome de usuário. Construída com foco em boas práticas de organização de código, reutilização de componentes e consumo de API com autenticação.
-
 ---
 
 **LINK DÁ PAGINA WEB**: [CLIQUE AQUI!](https://git-hub-profile-search-five.vercel.app/)
 
 ---
+
+Aplicação web simples que permite buscar perfis públicos do GitHub através de um nome de usuário. Construída com foco em boas práticas de organização de código, reutilização de componentes e consumo de API com autenticação.
+
 
 ## ✨ Funcionalidades
 
